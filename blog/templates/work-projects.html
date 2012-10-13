@@ -1,0 +1,263 @@
+  {% extends "base.html" %} 
+  {% block head %}
+  <title>HCarmitchel.com: Work Projects</title>
+  <link rel="stylesheet" href="/static/css/jquery.fancybox.css" type="text/css" media="screen" />
+  <link rel="stylesheet" href="/static/css/projects-style.css" type="text/css" media="screen" />
+  <script type="text/javascript" src="/static/js/jquery.fancybox.pack.js"></script>
+  {% endblock %}
+  {% block docreadyjs %}
+    $('.t1').tooltip({placement: "right"});
+    $('.t2').tooltip({placement: "right"});
+    $('.t3').tooltip({placement: "right"});
+    $('.t1').live("mouseover", function() {
+        $('#mainImage1').hide();
+        $('#imageWrap').css('background-image', "url('/static/img/ajax-loader.gif')");
+        var i = $('<img />').attr('src',this.href).load(function() {
+            $('#mainImage1').attr('src', i.attr('src'));
+            $('#imageWrap').css('background-image', 'none');
+            $('#mainImage1').fadeIn();
+        });
+        return false; 
+    });
+	$('.t2').live("mouseover", function() {
+        $('#mainImage2').hide();
+        $('#imageWrap').css('background-image', "url('/static/img/ajax-loader.gif')");
+        var i = $('<img />').attr('src',this.href).load(function() {
+            $('#mainImage2').attr('src', i.attr('src'));
+            $('#imageWrap').css('background-image', 'none');
+            $('#mainImage2').fadeIn();
+        });
+        return false; 
+    });
+	$('.t3').live("mouseover", function() {
+        $('#mainImage3').hide();
+        $('#imageWrap').css('background-image', "url('/static/img/ajax-loader.gif')");
+        var i = $('<img />').attr('src',this.href).load(function() {
+            $('#mainImage3').attr('src', i.attr('src'));
+            $('#imageWrap').css('background-image', 'none');
+            $('#mainImage3').fadeIn();
+        });
+        return false; 
+    });
+	$(".fancybox").fancybox({
+		openEffect	: 'elastic',
+		closeEffect	: 'fade',
+		nextEffect : 'none',
+		prevEffect : 'none',
+		padding: 3,
+		helpers : {
+			overlay : {
+				closeClick : true,
+				speedOut   : 200,
+				showEarly  : true,
+				css        : {}
+			},
+    		title : {
+    			type : 'inside'
+    		}
+    	}
+	});
+	{% endblock %}
+	<body>
+{% load comments %} {% block content %}
+  <div id="content">
+    <div class="container" id="page">
+      <div class="row">
+        <div class="span12">
+          <div class="tabbable">
+            <ul class="nav nav-tabs" id="myTab">
+              <li class="active"><a href="#AppDev" data-toggle="tab">Application Development</a></li>
+              <li><a href="#QA" data-toggle="tab">Quality Assurance</a></li>
+			  </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="AppDev">
+                <br />
+			<div class="row projectRow">
+			  <div class="span4">
+                <h1>EIS</h1>
+                  <hr class="high"/>
+                <h6>Description</h6>
+                <p>Create a console application to simulate blackjack.</p>
+                <h6>Partners</h6>
+                <p>None</p>
+                <h6>Technologies</h6>
+                <p>Visual Studio, StarUML</p>
+                <p>C#</p>
+                <br />
+                <br />
+				</div>
+				<div class="span5">
+			    <ul class="thumbnails">
+    <li class="span5">
+    <a href="/static/img/'EIS - General'.png" class="thumbnail fancybox" rel="gallery1" id="eis0" title="Teval main">
+	<div id="imageWrap">
+    <img src="/static/img/eis_main.jpg" alt="Main Image" id="mainImage1"/>
+	</div>
+    </a>
+    </li>
+    </ul>
+				</div>
+	<div class="span2" style="margin-left:0">
+	   <ul class="thumbnails">
+	   	 <li class="span2">
+    <a href="/static/img/'EIS - General'.png" class="thumbnail t1 fancybox" id="eis1" style="padding:0; margin-left:3px;" rel="gallery1" rel="tooltip" title="Main<br/>page">
+    <div style="background-image: url('/static/img/eis_main.jpg')" class="thumb"><h5></h5></div>
+    </a>
+    </li>
+    <li class="span2">
+    <a href="/static/img/'EIS - Student Requirements'.png" class="thumbnail t1 fancybox" id="eis2" style="padding:0; margin-left:3px;" rel="gallery1" rel="tooltip" title="Section<br/>Page">
+	    <div style="background-image: url('/static/img/eis_general.jpg')" class="thumb"><h5></h5></div>
+
+    </a>
+    </li>
+	    <li class="span2">
+    <a href="/static/img/'EIS - Search Results'.png" class="thumbnail t1 fancybox" id="eis3"  style="padding:0; margin-left:3px;" rel="gallery1" rel="tooltip" title="Sample<br/>Feature">
+    <div style="background-image: url('/static/img/eis_instructors.jpg')" class="thumb"><h5></h5></div>
+    </a>
+    </li>
+		    <li class="span2" style="margin-bottom:0; width:120px;">
+    <a href="/static/img/eis_quicklist.jpg" class="thumbnail t1 fancybox" id="eis4"  style="padding:0; margin-left:3px;" rel="gallery1" rel="tooltip" title="Sample<br/>Defect">
+    <div style="background-image: url('/static/img/eis_quicklist.jpg')" class="thumb"><h5></h5></div>
+    </a>
+    </li>
+    </ul></div>
+				</div>
+				<div class="row projectRow" style="padding-top:30px;">
+			  <div class="span4">
+                <h1>TEVAL</h1>
+                  <hr class="high"/>
+                <h6>Description</h6>
+                <p>Design and build a vending machine GUI. Read more about it <a href="http://www.k-state.edu/catl/ratings/teval/index.htm">here</a>.</p>
+                <h6>Also on project</h6>
+                <p>Dustin Hammett, full-time application developer</p>
+                <h6>Technologies</h6>
+                <p>Intellij-IDEA, PuTTY, SVN</p>
+                <p>Java, jQuery</p>
+				</div>
+				<div class="span5">
+			    <ul class="thumbnails">
+    <li class="span5">
+    <a href="/static/img/Teval_main.png" class="thumbnail">
+	<div id="imageWrap">
+    <img src="/static/img/Teval_main.png"  alt="TEVAL" id="mainImage2"/></div>
+    </a>
+    </li>
+    </ul>
+				</div>
+								<div class="span2" style="margin-left:0">
+			    <ul class="thumbnails">
+    <li class="span2">
+    <a href="/static/img/Teval_datepicker.jpg" class="thumbnail t2" style="padding:0; margin-left:3px;" rel="tooltip" title="TEVAL Datepicker">
+    <img src="/static/img/Teval_1.jpg" alt="">
+    </a>
+    </li>
+	    <li class="span2">
+    <a href="/static/img/Teval_main.jpg" class="thumbnail t2" style="padding:0; margin-left:3px;" rel="tooltip" title="Main page">
+    <img src="/static/img/Teval_main.jpg" alt="">
+    </a>
+    </li>
+	    <li class="span2">
+    <a href="/static/img/Teval_reports.jpg" class="thumbnail t2" style="padding:0; margin-left:3px;" rel="tooltip"  title="Reports">
+    <img src="/static/img/Teval_reports.jpg" alt="">
+    </a>
+    </li>
+		    <li class="span2" style="margin-bottom:0; width:120px;">
+    <a href="/static/img/Teval_main.jpg" class="thumbnail t2" style="padding:0; margin-left:3px;"  rel="tooltip" title="Home page">
+    <img src="/static/img/Teval_main.jpg" alt="">
+    </a>
+    </li>
+    </ul></div>
+				</div>
+                <br />
+				 <div class="row projectRow" style="padding-top:30px;">
+				 			  <div class="span4">
+
+                <h1>JOBAPP</h1>
+			  				  <hr class="high"/>
+
+                <h6>Description</h6>
+                <p>Design and build a registration system application that takes in and stores user input about cars and drivers.</p>
+                <h6>Partners</h6>
+                <p>None</p>
+                <h6>Technologies</h6>
+                <p>Visual Studio, StarUML</p>
+                <p>C#</p>
+				</div>
+				<div class="span5">
+			    <ul class="thumbnails">
+    <li class="span5">
+    <a href="http://www.k-state.edu/catl/ratings/teval/index.htm" class="thumbnail">
+	<div id="imageWrap">
+    <img src="/static/img/Teval_main.png"  alt="Main Image" id="mainImage3"/></div>
+    </a>
+    </li>
+    </ul>
+				</div>
+								<div class="span2" style="margin-left:0">
+			    <ul class="thumbnails">
+    <li class="span2">
+    <a href="/static/img/Teval_1.jpg" class="thumbnail t3" style="padding:0; margin-left:3px; margin-bottom:2px">
+    <img src="/static/img/Teval_1.jpg" alt="">
+    </a>
+    </li>
+	    <li class="span2">
+    <a href="/static/img/Teval_2.jpg" class="thumbnail t3" style="padding:0; margin-left:3px; margin-bottom:2px">
+    <img src="/static/img/Teval_2.jpg" alt="">
+    </a>
+    </li>
+	    <li class="span2">
+    <a href="/static/img/Teval_main.png" class="thumbnail t3" style="padding:0; margin-left:3px; margin-bottom:2px">
+    <img src="/static/img/Teval_main.png" alt="">
+    </a>
+    </li>
+		    <li class="span2" style="margin-bottom:0;">
+    <a href="/static/img/Teval_main.png" class="thumbnail t3" style="padding:0; margin-left:3px; margin-bottom:2px">
+    <img src="/static/img/Teval_main.png" alt="">
+    </a>
+    </li>
+    </ul></div>
+				</div>
+              </div>
+              <div class="tab-pane" id="QA">
+                <br />
+                <h1>Project 1: Blackjack</h1>
+                  <hr class="high"/>
+                <h6>Description</h6>
+                <p>Create a console application to simulate blackjack.</p>
+                <h6>Partners</h6>
+                <p>None</p>
+                <h6>Technologies</h6>
+                <p>Visual Studio, StarUML</p>
+                <p>C#</p>
+                <br />
+                <br />
+                <h1>Project 2: Vending Machine GUI</h1>
+                  <hr class="high"/>
+                <h6>Description</h6>
+                <p>Design and build a vending machine GUI.</p>
+                <h6>Partners</h6>
+                <p>None</p>
+                <h6>Technologies</h6>
+                <p>Visual Studio, StarUML</p>
+                <p>C#</p>
+                <br />
+                <h1>Project 3: DMV GUI</h1>
+                  <hr class="high"/>
+                <h6>Description</h6>
+                <p>Design and build a registration system application that takes in and stores user input about cars and drivers.</p>
+                <h6>Partners</h6>
+                <p>None</p>
+                <h6>Technologies</h6>
+                <p>Visual Studio, StarUML</p>
+                <p>C#</p>
+                <br />
+                <br />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>{% endblock %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+  {% block head %}
+  <title>HCarmitchel.com: Resume</title>
+  {% endblock %}
+  {% block docreadyjs %}
+	$('#feedbackModal').modal();
+  {% endblock %}
+{% load comments %} {% block content %}
+  <div id="content">
+    <div class="container" id="page">
+		<div class="row">
+		<div class="span12">
+			  <div class="paragraph">
+			  	  <div><h1>Thanks!</h1></div>
+			  <hr class="high"/>
+			  {% if messages.success %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success{% if message.tags %} class="{{ message.tags }}{% endif %}"><button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button><strong><i class="icon-ok-sign icon-white"></i> Success! </strong>{{ message }}</div>
+    {% endfor %}
+</ul>{% endif %}
+
+	{% if messages.error %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-error{% if message.tags %} class="{{ message.tags }}{% endif %}"><button type="button" class="close" data-dismiss="alert"><i class="icon-remove icon-white"></i></button><strong><i class="icon-exclamation-sign icon-white"></i> Error! </strong>{{ message }}</div>
+    {% endfor %}
+</ul>
+{% endif %}
+I appreciate your feedback. Have an intangible internet cookie.  </div></div></div>
+{% endblock %}
+  </div>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+  {% extends "base.html" %} {% load comments %} {% block content %}
+
+  <div id="navigation">
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="container">
+                <ul class="nav">
+                  <li><a href="/blog/">About</a></li>
+             <!--     <li class="active"><a href="/blog/posts.html">Blog</a></li>  !-->
+                  <li class="dropdown" id="menu1">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href=
+                    "#menu1">Portfolio</a>
+                    <ul class="dropdown-menu">
+					<li><a href="/blog/work-projects.html">Work Projects</a></li>
+					<li><a href="/blog/course-projects.html">Course Projects</a></li>
+                    </ul>
+                  </li>
+                  
+				  <li><a href="/blog/resume.html">R&eacute;sum&eacute;</a></li>
+                  <li><a href="/blog/contact.html">Contact</a></li>                  <li><a href="/blog/credit.html">Credit</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="content">
+    <div class="container" id="page">
+      <div class="row">
+        <div class="span12 "  id="postComments">
+          <div class="span6" style="margin-left: 0px;">
+            <h3 class="posth">{{ post.title }}</h3>
+			</div>
+			<div class="span5" style="text-align:right; margin-left: 0px;">
+				{{ post.created }}
+            </div><hr />
+			<div class="post_body">
+				{{ post.body|safe|linebreaks }}
+			</div>
+			{{p}}
+		<div class="tags">Tags:
+			{% for tag in post.tags.all %}
+			<a href="/blog/tag/{{tag}}">{{tag}}</a>
+			{% if not forloop.last %},{% endif %}
+			{% endfor %} 
+						{% get_comment_count for post as comment_count %}
+
+			{% if comment_count != 0 %}<br/><br/>
+
+			{% get_comment_list for post as comment_list %}
+
+{% for comment in comment_list %}
+   			<div class="well" id="postComment">
+			<div class="span5" style="margin-left: 0px;"><h3 style="display:inline"><i class="icon-comment"></i>&nbsp;&nbsp;&nbsp;<h6 style="display:inline">by&nbsp;&nbsp;{{ comment.user_name }}</h6></h3></div>
+			<div class="span5" style="text-align:right; margin-left: 0px;"><h6>{{ comment.submit_date }}</h6></div>
+			<br />
+			<br />
+			{{ comment.comment }}
+			</div>
+
+{% endfor %}
+			{% endif %}
+			<br/>
+			<br/>
+		</div>
+		<div class="well">		
+		<h1 class="posth">Add Comment</h1><hr/>{% get_comment_form for post as form %}
+<form action="{% comment_form_target %}" method="post" class="form-horizontal">{% csrf_token %}
+   {% if next %}<div><input type="hidden" name="next" value="{{ next }}" /></div>{% endif %}
+  {% for field in form %}
+    {% if field.is_hidden %}
+      <div>{{ field }}</div>
+    {% else %}
+      {% if field.errors %}{{ field.errors }}{% endif %}
+      <p
+        {% if field.errors %} class="error"{% endif %}
+        {% ifequal field.name "honeypot" %} style="display:none;"{% endifequal %}>
+        {{ field.label_tag }} {{ field }}
+      </p>
+    {% endif %}
+  {% endfor %}
+  <br/>
+    <tr>
+      <td colspan="2">
+        <input type="submit" class="btn btn-primary" name="submit" value="Post">
+        <input type="submit" class="btn btn-primary" name="preview" value="Preview">
+		<input type="hidden" class="btn btn-primary" name="next" value="/blog/posts.html" />
+      </td>
+    </tr>
+</form>
+
+		
+		
+		</div>
+
+	</div>
+	</div>
+</div>
+</div>
+{% endblock %}
+
+
+</body>
+</html>

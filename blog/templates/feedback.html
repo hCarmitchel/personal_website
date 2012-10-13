@@ -1,0 +1,42 @@
+	<div class="modal hide fade" id="feedbackModal">
+    <div class="modal-header" style="padding-bottom:14px">
+    <button type="button" class="close" data-dismiss="modal"><i style="vertical-align: text-top" class="icon-remove icon-white"></i></button>
+    <h1>Feedback</h1>
+    </div>
+    <div class="modal-body" style="padding-top:0">
+<form action="/blog/thanks.html" method="post" class="form-horizontal" id="feedbackForm">{%csrf_token%}
+    <fieldset>
+<legend>How Am I doing?</legend>
+	{% if messages.success %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success{% if message.tags %} class="{{ message.tags }}{% endif %}"><button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button><strong><i class="icon-ok-sign icon-white"></i> Success! </strong>{{ message }}</div>
+    {% endfor %}
+</ul>{% endif %}
+
+	{% if messages.error %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-error{% if message.tags %} class="{{ message.tags }}{% endif %}"><button type="button" class="close" data-dismiss="alert"><i class="icon-remove icon-white"></i></button><strong><i class="icon-exclamation-sign icon-white"></i> Error! </strong>{{ message }}</div>
+    {% endfor %}
+</ul>
+{% endif %}
+    <div class="modal-body">
+    {{ form.non_field_errors }}
+			        <div class="control-group {% if form.message.errors %} error {%endif%}">	
+	<label class="control-label" for="message">Message:</label>
+    <div class="controls" id="feedback_message">
+            {{ form.feedback_message }}<span class="help-inline">* {{ form.message.errors }}</span>
+    </div>
+    </div>	<div class="control-group" style="text-align: center">
+	<p>
+	<br />
+	Want to contact me instead of leaving anonymous feedback? Click <a href="/blog/contact.html">here</a>.
+	</p></div></div>
+    </fieldset>
+	 <div class="modal-footer">
+    <p><input type="submit" class="btn btn-primary" value="Send message" /><a href="#" class="btn" data-dismiss="modal">Close</a>
+</p>
+	</div>
+</form> 
+    </div></div>

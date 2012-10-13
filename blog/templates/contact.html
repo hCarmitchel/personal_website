@@ -1,0 +1,70 @@
+  {% extends "base.html" %} 
+     {% block head %}
+  <title>HCarmitchel.com: Contact</title>
+	{% endblock %}
+<body>
+{% load comments %} {% block content %}
+  <div id="content">
+    <div class="container" id="page">
+	<div class="row">
+		<div class="span12">
+			  <div class="paragraph">
+			  <div><h1 style="text-shadow: 1px 1px 0 #F2F2F2, 1px 2px 0 #B1B1B2;">Contact</h1></div>
+			  <hr class="high"/><p>
+			  Want to submit anonymous feedback instead of contacting me? Click <a data-toggle="modal" href="#feedbackModal">here</a>. I'd love to hear what you have to say. 
+	</br>
+	</br>
+	</p>
+	{% if messages.success %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-success{% if message.tags %} class="{{ message.tags }}{% endif %}"><button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button><strong><i class="icon-ok-sign icon-white"></i> Success! </strong>{{ message }}</div>
+    {% endfor %}
+</ul>{% endif %}
+
+	{% if messages.error %}
+<ul class="messages">
+    {% for message in messages %}
+    <div class="alert alert-error{% if message.tags %} class="{{ message.tags }}{% endif %}"><button type="button" class="close" data-dismiss="alert"><i class="icon-remove icon-white"></i></button><strong><i class="icon-exclamation-sign icon-white"></i> Error! </strong>{{ message }}</div>
+    {% endfor %}
+</ul>
+{% endif %}
+<form action="/blog/contact.html" method="post" class="form-horizontal" id="contact">{%csrf_token%}
+    {{ form.non_field_errors }}
+        <div class="control-group  {% if form.subject.errors %} error {%endif%}">
+	<label class="control-label" for="subject">Subject:</label>
+    <div class="controls" id="subject">
+            {{ form.subject }}<span class="help-inline">* {{ form.subject.errors }}</span>
+    </div>
+    </div>
+	<div class="control-group  {% if form.sender.errors %} error  {%endif%}">  
+	<label class="control-label" for="sender">Your email:</label>
+    <div class="controls" id="sender">
+            {{ form.sender }}<span class="help-inline">* {{ form.sender.errors }}</span>
+    </div>
+    </div>
+			        <div class="control-group {% if form.message.errors %} error {%endif%}">	
+	<label class="control-label" for="message">Message:</label>
+    <div class="controls" id="message">
+            {{ form.message }}<span class="help-inline">* {{ form.message.errors }}</span>
+    </div>
+    </div>
+		<div class="control-group  {% if form.cc_myself.errors %} error {%endif%}">
+        
+	<label class="control-label" for="cc">CC yourself:</label>
+    <div class="controls" id="cc">
+        {{ form.cc_myself }}<span class="help-inline"> {{ form.cc_myself.errors }}</span>
+    </div>
+    </div>
+	 <div class="modal-footer">
+    <p><input type="submit" class="btn btn-primary" value="Send message" /></p>
+	    </div>
+</form>   
+		  </div>
+		  </div>
+    </div>
+	
+    </div>{% endblock %}
+  </div>
+</body>
+</html>
