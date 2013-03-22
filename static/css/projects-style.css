@@ -1,0 +1,56 @@
+.nav-tabs > .active > a, .nav-tabs > .active > a:hover, .nav-tabs > .active > a:visited, .nav-tabs > .active > a:focus { color: #555 !important; }
+
+.carousel{
+	-moz-box-shadow: 1px 1px 8px rgba(50, 50, 50, 0.75);
+	-webkit-box-shadow: 1px 1px 8px rgba(50, 50, 50, 0.75);
+	box-shadow: 1px 1px 8px rgba(50, 50, 50, 0.75);
+}
+.carousel:hover{
+
+}
+.carousel-control {
+	height: 60px !important;
+	line-height: 50px !important;
+	margin-top: 0px !important;
+	z-index: 10 !important; }
+
+.carousel-control:hover, .carousel-control:active, .carousel-control:visited, .carousel-control:focus {
+	color: #fff !important;
+	transition: .1s; }
+
+.carousel-inner {
+	z-index: 20 !important; }
+
+.left {
+	border-radius: 15px 0 0 15px;
+	left: -18px; }
+	
+.left:hover { left: -22px; }
+
+.right {
+	border-radius: 0 15px 15px 0;
+	right: -19px !important; }
+	
+.right:hover { right: -23px !important;; }
+	
+.fancybox-title {
+	font-weight: 800;
+	font-size: 1.3em;
+	text-shadow: 1px 1px 1px #000;	}
+	
+.fancybox-title-float-wrap .child {
+	border-radius: 7px; }
+	
+.thumbnail { 
+	background:#555 url('../img/magnifier.png') no-repeat center;
+	border:none;
+	padding: 0px; 
+	z-index:-1;}
+	
+.thumbnail:hover{ 
+	border: none;
+	padding: 0px; 
+	z-index:10000 !important;}
+	
+.thumbnail > img:hover{
+	opacity: .5; }

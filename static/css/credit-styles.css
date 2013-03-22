@@ -1,0 +1,43 @@
+.roundabout-holder {
+	  list-style: none;
+	  padding: 0;
+	  height: 220px;
+	  width: 550px;
+	  margin-left: auto;
+	  margin-right: auto;
+   }
+   .roundabout-moveable-item {
+	  height: 220px;
+	  width: 220px;
+	  cursor: pointer;
+	  background-color: #eee;
+	  border: 1px solid #999;
+   }
+   .roundabout-in-focus {
+	  cursor: auto;
+   }
+   .roundabout-moveable-item h5 {
+   font-family: Segoe Print, Segoe Script;
+   font-size:1em;
+   color: #000;
+   line-height:.9em;
+   margin-bottom: 5px;
+   margin-top: 10px;
+   text-align:center;
+   }
+   .roundabout-moveable-item h6 {
+   font-size:.7em;
+   text-align:center;
+   line-height:.6em;
+   margin-top:0px;
+   }
+#list li {
+box-shadow: 0 1px 7px rgba(0, 0, 0, 0.4)
+}
+    #list li div {
+	  border: 1px solid #999;
+      margin: 5px;
+      }
+#startBtn {
+line-height: 18px;
+}
